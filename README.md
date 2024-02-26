@@ -87,7 +87,7 @@ func main() {
 
 Dolayısıyla, bir haritayı map literal kullanarak da başlatabiliriz.
 
-˙˙`go
+```go
 
 package main
 
@@ -105,3 +105,89 @@ func main() {
 
 Ayrıca, yerleşik make fonksiyonunu kullanmakla aynı olan map değişmezleri ile boş bir diziyi başlatabiliriz.
 
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	mapData := map[string]string{
+		"name":   "Berkay",
+		"age":    "20",
+		"status": "Busy",
+	}
+
+	for key, value := range mapData {
+		fmt.Println("\nKey:", key, "\nValue:", value)
+	}
+
+}
+
+// Çıktısı
+
+// Key: name 
+// Value: Berkay
+
+// Key: age 
+// Value: 20
+
+// Key: status 
+// Value: Busy
+
+```
+
+Go'nun kodumuzda daha fazla işlem yapabilmemiz için bize sağladığı iki yerleşik fonksiyon daha vardır,
+map uzunluğunu kontrol etmek için len'i kullanabiliriz ve ayrıca mevcut anahtarlardan bazılarını silmek istiyorsak,
+değerleri argüman olarak geçirirken sadece delete fonksiyonunu uygulayabiliriz.
+Dahası, delete fonksiyonu hiçbir şey döndürmez ve belirtilen anahtar mevcut değilse hiçbir şey yapmaz.
+Bu nedenle, yukarıdaki mapData haritası için bu iki yerleşik işlevi deniyorum.
+
+Lenght:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	mapData := map[string]string{
+		"name":   "Berkay",
+		"age":    "20",
+		"status": "Busy",
+	}
+
+	l := len(mapData)
+
+	fmt.Println(l)
+}
+
+// Çıktısı : 3
+
+```
+
+Delete:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	mapData := map[string]string{
+		"name":   "Berkay",
+		"age":    "20",
+		"status": "Busy",
+	}
+	delete(mapData, "status")
+
+	fmt.Println(mapData)
+}
+
+// Çıktısı : map[age:20 name:Berkay]
+
+```
+
+Görüşmek üzere <3
